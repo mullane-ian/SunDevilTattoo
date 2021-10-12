@@ -1,0 +1,177 @@
+:root {
+    /* Colors */
+    --black: rgba(0, 0, 0, 1);
+    --transparent-black: rgba(0, 0, 0, 0.25);
+    --transparent-silver: rgba(196, 196, 196, 0);
+    --white: rgba(255, 255, 255, 1);
+  
+    /* Typographies */
+    /* russo-one-18-regular */
+    --russo-one-18-regular-family: "Russo One";
+    --russo-one-18-regular-size: 18px;
+    --russo-one-18-regular-weight: 400;
+    --russo-one-18-regular-line-height: normal;
+  
+    /* russo-one-24-regular */
+    --russo-one-24-regular-family: "Russo One";
+    --russo-one-24-regular-size: 24px;
+    --russo-one-24-regular-weight: 400;
+    --russo-one-24-regular-line-height: normal;
+  
+    /* russo-one-60-regular */
+    --russo-one-60-regular-family: "Russo One";
+    --russo-one-60-regular-size: 60px;
+    --russo-one-60-regular-weight: 400;
+    --russo-one-60-regular-line-height: normal;
+  }
+  
+  
+  
+  *{
+    
+  
+      margin: 0;
+      padding: 0;
+  }
+  
+  *::-webkit-scrollbar{
+    display: none;
+  }
+  
+  
+  .desktop-2 {
+    height: 100%;
+    padding: 0 972px 276.99px 41px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+  }
+  .top-right {
+    margin-bottom: 9px;
+    display: flex;
+    align-items: flex-start;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+  
+  }
+  .top-right:hover {
+      cursor: crosshair;
+  }
+  .shop {
+    height: 53px;
+    width: 47px;
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    margin-right: 12px;
+    font-family: var(--russo-one-18-regular-family);
+    font-size: var(--russo-one-18-regular-size);
+    font-weight: var(--russo-one-18-regular-weight);
+    line-height: var(--russo-one-18-regular-line-height);
+  }
+  .slash {
+    height: 53px;
+    width: 9px;
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    margin-right: 12px;
+    font-family: var(--russo-one-18-regular-family);
+    font-size: var(--russo-one-18-regular-size);
+    font-weight: var(--russo-one-18-regular-weight);
+    line-height: var(--russo-one-18-regular-line-height);
+  }
+  .schedule {
+    height: 53px;
+    width: 84px;
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    margin-right: 12px;
+    font-family: var(--russo-one-18-regular-family);
+    font-size: var(--russo-one-18-regular-size);
+    font-weight: var(--russo-one-18-regular-weight);
+    line-height: var(--russo-one-18-regular-line-height);
+  }
+  .contact {
+    height: 53px;
+    width: 70px;
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    font-family: var(--russo-one-18-regular-family);
+    font-size: var(--russo-one-18-regular-size);
+    font-weight: var(--russo-one-18-regular-weight);
+    line-height: var(--russo-one-18-regular-line-height);
+  }
+  .line-1 {
+    width: 1px;
+    height: 484.01px;
+    background-color: black;
+    margin-bottom: 9px;
+  }
+  .title {
+    display: flex;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    align-items: center;
+  }
+  .title:hover {
+      cursor:crosshair;
+  }
+  .title:not(:last-of-type) {
+    margin-bottom: 9px;
+  }
+  .sun-devil {
+    color: var(--black);
+    text-shadow: 0 4px 4px var(--transparent-black);
+    font-family: var(--russo-one-60-regular-family);
+    font-size: var(--russo-one-60-regular-size);
+    font-weight: var(--russo-one-60-regular-weight);
+    line-height: var(--russo-one-60-regular-line-height);
+  }
+  .tattoo {
+    color: var(--black);
+    text-shadow: 0 4px 4px var(--transparent-black);
+    font-family: var(--russo-one-24-regular-family);
+    font-size: var(--russo-one-24-regular-size);
+    font-weight: var(--russo-one-24-regular-weight);
+    line-height: var(--russo-one-24-regular-line-height);
+  }
+  .artists {
+    width: 333px;
+    color: var(--black);
+    margin-bottom: 9px;
+    text-shadow: 0 4px 4px var(--transparent-black);
+    font-family: var(--russo-one-18-regular-family);
+    font-size: var(--russo-one-18-regular-size);
+    font-weight: var(--russo-one-18-regular-weight);
+    line-height: var(--russo-one-18-regular-line-height);
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: white;
+    
+  }
+  
+  .artists:hover{
+      cursor: crosshair;
+  }
+  .facebook-black:not(:last-of-type) {
+    margin-right: 8px;
+    
+  }
+  
+  .facebook-black:hover {
+      cursor: crosshair;
+  }
+  
+  .line-3 {
+    width: 1px;
+    height: 433px;
+  background-color: black;
+    position: absolute;
+    left: 41px;
+    bottom: -165.01px;
+  }
+
+/*# sourceMappingURL=main.css.map*/
