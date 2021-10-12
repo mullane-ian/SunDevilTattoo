@@ -81,7 +81,7 @@ const CustomPass = {
             newUV = vUv + p*vec2(0.,1.);
 
             newUV.x = mix(vUv.x, length(p), progress);
-            newUV.y = mix(vUv.y, 0., progress);
+            newUV.y = ((mix(vUv.y, 1., progress))*1.075);
 
 
 			vec4 color = texture2D( tDiffuse, newUV );
