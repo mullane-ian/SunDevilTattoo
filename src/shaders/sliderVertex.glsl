@@ -11,7 +11,7 @@ void main() {
 
 
   pos.y += sin(time * 0.3) * .02;
-  //  vUv.x -= sin(time) * .02;
+  vUv.x -= sin(time) * .02;
   vUv.y -= sin(time*0.3) * .02;
 
 

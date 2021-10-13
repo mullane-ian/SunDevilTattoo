@@ -1,3 +1,8 @@
+@font-face {
+  font-family: Bagnard;
+  font-weight: bold;
+  src: url("./fonts/Bagnard.ttf") format("ttf");
+}
 :root {
     /* Colors */
     --black: rgba(0, 0, 0, 1);
@@ -7,28 +12,29 @@
   
     /* Typographies */
     /* russo-one-18-regular */
-    --russo-one-18-regular-family: "Russo One";
-    --russo-one-18-regular-size: 18px;
+    --russo-one-18-regular-family: "Bagnard";
+    --russo-one-18-regular-size: 24px;
     --russo-one-18-regular-weight: 400;
     --russo-one-18-regular-line-height: normal;
   
     /* russo-one-24-regular */
-    --russo-one-24-regular-family: "Russo One";
+    --russo-one-24-regular-family: "Bagnard";
     --russo-one-24-regular-size: 24px;
     --russo-one-24-regular-weight: 400;
     --russo-one-24-regular-line-height: normal;
   
     /* russo-one-60-regular */
-    --russo-one-60-regular-family: "Russo One";
-    --russo-one-60-regular-size: 60px;
-    --russo-one-60-regular-weight: 400;
+    --russo-one-60-regular-family: "Bagnard";
+    --russo-one-60-regular-size: 100px;
+    --russo-one-60-regular-weight: 600;
     --russo-one-60-regular-line-height: normal;
   }
+
   
   
   
   *{
-    
+    --russo-one-24-regular-family: "Bagnard";
   
       margin: 0;
       padding: 0;
@@ -53,8 +59,8 @@
     margin-bottom: 9px;
     display: flex;
     align-items: flex-start;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: white;
+    -webkit-text-stroke-width: 0.4px;
+    -webkit-text-stroke-color: #88634c70;
   
   }
   .top-right:hover {
@@ -115,8 +121,8 @@
   }
   .title {
     display: flex;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: white;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #9b654342;
     align-items: center;
   }
   .title:hover {
@@ -127,7 +133,7 @@
   }
   .sun-devil {
     color: var(--black);
-    text-shadow: 0 4px 4px var(--transparent-black);
+    text-shadow: 0 -2px 4px #88634C;
     font-family: var(--russo-one-60-regular-family);
     font-size: var(--russo-one-60-regular-size);
     font-weight: var(--russo-one-60-regular-weight);
@@ -151,7 +157,7 @@
     font-weight: var(--russo-one-18-regular-weight);
     line-height: var(--russo-one-18-regular-line-height);
     -webkit-text-stroke-width: 0.5px;
-    -webkit-text-stroke-color: white;
+    -webkit-text-stroke-color: #88634c56;
     
   }
   

@@ -78,6 +78,7 @@ const CustomPass = {
 
 
 
+
             newUV = vUv + p*vec2(0.,1.);
 
             newUV.x = mix(vUv.x, length(p), progress);

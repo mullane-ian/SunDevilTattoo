@@ -38,7 +38,7 @@ export default class Sketch {
   constructor(options) {
     this.scene = new THREE.Scene();
 
-    this.urls = [t1,t2,t3]
+    this.urls = [t1,t2,t3,t4,t5,t6,t7,t8,t9]
 
     this.urls2 = [t4,t5,t6]
     this.urls3 = [t7,t8,t9]
@@ -81,8 +81,8 @@ export default class Sketch {
     this.render();
     this.setupResize();
     this.settings();
-    this.handleScroll()
     this.handleImages()
+    this.handleScroll()
 
     
 
@@ -127,23 +127,26 @@ export default class Sketch {
 
 
   handleImages(){
-    let images = [...document.querySelectorAll('img')]
+
+    
     this.materials = []
     this.sliderMeshes = []
     this.groups = []
 
-    images.forEach((im,i)=>{
+    this.textures.forEach((im,i)=>{
         let mat = this.sliderMaterial.clone()
         this.materials.push(mat);
         let group = new THREE.Group()
-         mat.uniforms.uTexture.value = new THREE.Texture(im)
+         mat.uniforms.uTexture.value = im
          mat.uniforms.uTexture.value.needsUpdate = true
-        let geo = new THREE.PlaneBufferGeometry(1.3,1,20,20)
+        let geo = new THREE.PlaneBufferGeometry(1.5,1,20,20)
          let mesh = new THREE.Mesh(geo,mat)
         this.sliderMeshes.push(mesh)
+        
         group.add(mesh)
          this.scene.add(group)
          this.groups.push(group)
+         
          mesh.position.y = i * 1.2
 
          group.rotation.y = -0.5
@@ -267,6 +270,8 @@ export default class Sketch {
 
   
   handleScroll(){
+    let attractMode = false
+    let attractTo = 0
     let speed = 0
 var position = {}
 position.pos = 0
@@ -278,7 +283,7 @@ window.addEventListener('wheel',(e)=>{
     speed += e.deltaY * 0.0003
 })
 
-let objs = Array(5).fill({dist: 0})
+let objs = Array(9).fill({dist: 0})
 
 let meshes = this.sliderMeshes
 
@@ -288,7 +293,7 @@ function raf(){
     
     speed *= 0.8
     position.pos += speed
-    console.log()
+    
     
     
    
@@ -298,12 +303,12 @@ function raf(){
           o.dist = 1 - o.dist**2
           elems[i].style.transform = `scale(${1 + 0.4*o.dist})`
 
-          let scale = 1 + 0.1*o.dist;
-          that.sliderMeshes[i].position.y = i*1.2 - position.pos * 1.2
+          let scale = (1 + 0.*o.dist);
+          that.sliderMeshes[i].position.y = i*1.2 - position.pos * 1.2 - 1.2
           that.sliderMeshes[i].scale.set(scale,scale,scale)
           that.sliderMeshes[i].material.uniforms.uDistance.value = o.dist
         
-          if(position.pos < -2 || position.pos > 6){
+          if(position.pos < -3 || position.pos > 8){
             
             gsap.to(position,{pos:0, duration:1})
           }
@@ -314,17 +319,66 @@ function raf(){
 
     let diff = rounded - position.pos
 
-    position.pos += Math.sign(diff)*Math.pow(Math.abs(diff),0.7)*0.02
+    if(attractMode){
+      position.pos += -(position.pos - attractTo) * 0.05
+    }
+    else{
+      position.pos += Math.sign(diff)*Math.pow(Math.abs(diff),0.7)*0.02
+
+    }
+    
 
     // block.style.transform = `translate(0,${position * 100 + 50}px)`
     //wrap.style.transform = `translate(0,${position * 100 + 50}px)`
     
- 
 
     window.requestAnimationFrame(raf)
 }
 
 raf()
+
+
+let navs = [...document.querySelectorAll('li.navli')]
+let nav = document.querySelector('.nav')
+
+console.log(this.groups)
+let rots = this.groups.map((e=>e.rotation))
+console.log(rots)
+
+
+nav.addEventListener('mouseenter',()=>{
+  attractMode = true
+
+  gsap.to(rots,{
+    duration: 2,
+    x:0,
+    y:0,
+    z:0,
+
+  })
+
+})
+nav.addEventListener('mouseleave',()=>{
+  attractMode = false
+  gsap.to(rots,{
+    duration: 2,
+    x:-0.3,
+    y:-0.5,
+    z:-0.1,
+
+  })
+})
+
+navs.forEach(el =>{
+  
+  el.addEventListener('mouseenter', (e)=>{
+    
+    attractTo = (Number(e.target.getAttribute('data-nav')))
+  
+  })
+})
+
+
   }
 
 
@@ -360,6 +414,7 @@ raf()
     this.composer.render()
     
   }
+
 }
 
 
