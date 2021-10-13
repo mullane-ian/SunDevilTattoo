@@ -280,6 +280,11 @@ let block = document.getElementById('block')
 let wrap = document.getElementById('wrap')
 let elems = [...document.querySelectorAll('.n')]
 window.addEventListener('wheel',(e)=>{
+  
+    speed += e.deltaY * 0.0003
+})
+window.addEventListener('scroll',(e)=>{
+
     speed += e.deltaY * 0.0003
 })
 
