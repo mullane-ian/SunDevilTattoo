@@ -45,6 +45,17 @@
   }
   
 
+  .navli{
+    margin: 10px;
+    padding: 20px;
+    font-size: 48px;
+    font-family: 'Bagnard';
+    text-align: center;
+  }
+  .navli:hover{
+    font-size: 60px;
+  }
+
 
 
   .desktop-2 {
@@ -60,7 +71,7 @@
     display: flex;
     align-items: flex-start;
     -webkit-text-stroke-width: 0.4px;
-    -webkit-text-stroke-color: #88634c70;
+    -webkit-text-stroke-color: #ffffff70;
   
   }
   .top-right:hover {
@@ -122,7 +133,7 @@
   .title {
     display: flex;
     -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: #9b654342;
+    -webkit-text-stroke-color: #ffffff42;
     align-items: center;
   }
   .title:hover {
@@ -133,7 +144,7 @@
   }
   .sun-devil {
     color: var(--black);
-    text-shadow: 0 -2px 4px #88634C;
+    text-shadow: 0 -2px px var(--transparent-black);
     font-family: var(--russo-one-60-regular-family);
     font-size: var(--russo-one-60-regular-size);
     font-weight: var(--russo-one-60-regular-weight);
@@ -141,9 +152,9 @@
   }
   .tattoo {
     color: var(--black);
-    text-shadow: 0 4px 4px var(--transparent-black);
+    text-shadow: 0 4px 10px var(--transparent-black);
     font-family: var(--russo-one-24-regular-family);
-    font-size: var(--russo-one-24-regular-size);
+    font-size: 32px;
     font-weight: var(--russo-one-24-regular-weight);
     line-height: var(--russo-one-24-regular-line-height);
   }

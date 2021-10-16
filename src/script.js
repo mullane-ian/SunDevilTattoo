@@ -42,11 +42,24 @@ export default class Sketch {
 
     this.urls2 = [t4,t5,t6]
     this.urls3 = [t7,t8,t9]
+
+   
+    let heights = new Array(9)
+    console.log(heights)
     
- 
-    this.textures = this.urls.map(url=>new THREE.TextureLoader().load(url))
-    this.textures1 = this.urls2.map(url=>new THREE.TextureLoader().load(url))
-    this.textures2 = this.urls3.map(url=>new THREE.TextureLoader().load(url))
+    let i = 0
+    this.textures = this.urls.map(url=>new THREE.TextureLoader().load(url,function(tex){
+      
+      let height = Number(tex.image.height)
+      heights.push(height)
+      
+     
+
+  
+      i++
+    }))
+
+    
   
 
     this.container = options.dom;
@@ -75,6 +88,9 @@ export default class Sketch {
 
     this.isPlaying = true;
     
+
+
+    
     this.initPost()
     this.addObjects();
     this.resize();
@@ -97,6 +113,17 @@ export default class Sketch {
       }
       
   } 
+
+  window.onTouchStart = e => {
+
+    // to get the element
+    this.distort
+
+   if(e.target.className === 'sun-devil'){
+     this.unDistort()
+   }
+   
+} 
 
   
   }
@@ -134,12 +161,22 @@ export default class Sketch {
     this.groups = []
 
     this.textures.forEach((im,i)=>{
+      
+     
+       
+       
+    
         let mat = this.sliderMaterial.clone()
         this.materials.push(mat);
         let group = new THREE.Group()
          mat.uniforms.uTexture.value = im
-         mat.uniforms.uTexture.value.needsUpdate = true
-        let geo = new THREE.PlaneBufferGeometry(1.5,1,20,20)
+        
+     
+          
+
+         //mat.uniforms.uTexture.value.needsUpdate = true
+        
+        let geo = new THREE.PlaneBufferGeometry(1.2,1.2,20,20)
          let mesh = new THREE.Mesh(geo,mat)
         this.sliderMeshes.push(mesh)
         
@@ -148,6 +185,7 @@ export default class Sketch {
          this.groups.push(group)
          
          mesh.position.y = i * 1.2
+         group.rotation.y = -1
 
          group.rotation.y = -0.5
 
@@ -218,7 +256,7 @@ export default class Sketch {
       fragmentShader: fragment
     });
 
-    this.geometry = new THREE.PlaneGeometry(0.8, 1, 1, 1);
+    this.geometry = new THREE.PlaneGeometry(1, 1, 1, 1);
 
     this.meshes=[]
 
@@ -226,46 +264,18 @@ export default class Sketch {
       let m = this.material.clone()
       m.uniforms.uTexture.value = t
       let mesh = new THREE.Mesh(this.geometry,m)
-     // this.scene.add(mesh)
+     
       this.meshes.push(mesh)
       mesh.position.x = (i-0.9) *2
       mesh.position.z =-1
     })
 
-    this.geometry = new THREE.PlaneGeometry(0.8, 1, 1, 1);
 
-    this.meshes1=[]
 
-    this.textures1.forEach((t,i)=>{
-      let m = this.material.clone()
-      m.uniforms.uTexture.value = t
-      let mesh = new THREE.Mesh(this.geometry,m)
-     // this.scene.add(mesh)
-      this.meshes1.push(mesh)
-       mesh.position.z = -1
-      mesh.position.y =   1
 
-      mesh.position.x = i - 0.9
-      
 
-    })
 
-    this.meshes2=[]
-
-    this.textures2.forEach((t,i)=>{
-      let m = this.material.clone()
-      m.uniforms.uTexture.value = t
-      let mesh = new THREE.Mesh(this.geometry,m)
-      //this.scene.add(mesh)
-      this.meshes2.push(mesh)
-        mesh.position.z =-1
-      mesh.position.y =   0
-
-      
-
-    })
-
-    //this.scene.add(this.plane);
+    
   }
 
   
@@ -309,7 +319,7 @@ function raf(){
           elems[i].style.transform = `scale(${1 + 0.4*o.dist})`
 
           let scale = (1 + 0.*o.dist);
-          that.sliderMeshes[i].position.y = i*1.2 - position.pos * 1.2 - 1.2
+          that.sliderMeshes[i].position.y = i*1.3 - position.pos * 1.2 - 1.2
           that.sliderMeshes[i].scale.set(scale,scale,scale)
           that.sliderMeshes[i].material.uniforms.uDistance.value = o.dist
         
@@ -346,16 +356,16 @@ raf()
 let navs = [...document.querySelectorAll('li.navli')]
 let nav = document.querySelector('.nav')
 
-console.log(this.groups)
+
 let rots = this.groups.map((e=>e.rotation))
-console.log(rots)
+
 
 
 nav.addEventListener('mouseenter',()=>{
   attractMode = true
 
   gsap.to(rots,{
-    duration: 2,
+    duration: 1.5,
     x:0,
     y:0,
     z:0,
@@ -366,13 +376,14 @@ nav.addEventListener('mouseenter',()=>{
 nav.addEventListener('mouseleave',()=>{
   attractMode = false
   gsap.to(rots,{
-    duration: 2,
-    x:-0.3,
+    duration: 1.5,
+    x:0,
     y:-0.5,
-    z:-0.1,
+    z:-0.05,
 
   })
 })
+
 
 navs.forEach(el =>{
   
@@ -396,6 +407,7 @@ navs.forEach(el =>{
       m.rotation.z = -this.settings.progress*Math.PI/2
 
     })
+    
 
     
    
